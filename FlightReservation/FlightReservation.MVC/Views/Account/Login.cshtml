@@ -1,4 +1,24 @@
 ﻿@{
     Layout = null;
 }
-<h1>Login Page</h1>
+
+<h1> Login Page @_localization.Getkey("Welcome").Value</h1>
+<ul class="dropdown-menu">
+    <li>
+        <a 
+            asp-controller=" Shared"
+            asp-action=" ChangeLanguage"
+            asp-route-culture="en-US"
+            class="dropdown-item">
+            English
+        </a>
+    </li>
+    <li>
+       <a asp-controller=" Shared"
+          asp-action=" ChangeLanguage"
+          asp-route-culture="tr-TR"
+          class="dropdown-item">
+          Türkçe
+        </a>
+    </li>
+</ul>

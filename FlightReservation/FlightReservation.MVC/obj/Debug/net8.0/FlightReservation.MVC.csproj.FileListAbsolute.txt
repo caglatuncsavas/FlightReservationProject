@@ -135,3 +135,11 @@ C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\bin\Debug\ne
 C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\FlightReservation.MVC.csproj.AssemblyReference.cache
 C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\FlightReservation.MVC.csproj.CopyComplete
 C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\scopedcss\Views\Shared\_AdminLayout.cshtml.rz.scp.css
+C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\bin\Debug\net8.0\tr-TR\FlightReservation.MVC.resources.dll
+C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\bin\Debug\net8.0\en-US\FlightReservation.MVC.resources.dll
+C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\FlightReservation.MVC.Resources.SharedResource.tr-TR.resources
+C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\FlightReservation.MVC.Resources.SharedResourse.en-US.resources
+C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\FlightReservation.MVC.csproj.GenerateResource.cache
+C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\FlightReservation.MVC.sourcelink.json
+C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\tr-TR\FlightReservation.MVC.resources.dll
+C:\FlightReservationProject\FlightReservation\FlightReservation.MVC\obj\Debug\net8.0\en-US\FlightReservation.MVC.resources.dll
