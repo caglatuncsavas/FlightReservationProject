@@ -25,15 +25,15 @@ builder.Services.AddMvc()
     });
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    var supportedCultures = new List<CultureInfo>
+    var supportCultures = new List<CultureInfo>
     {
         new CultureInfo("en-US"),
         new CultureInfo("tr-TR")
     };
 
     options.DefaultRequestCulture = new RequestCulture(culture:"tr-TR", uiCulture: "tr-TR");
-    options.SupportedCultures = supportedCultures;
-    options.SupportedUICultures = supportedCultures;
+    options.SupportedCultures = supportCultures;
+    options.SupportedUICultures = supportCultures;
     options.RequestCultureProviders.Insert(0,new QueryStringRequestCultureProvider());
 });
 #endregion
@@ -46,11 +46,12 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 #endregion
 
 #region Authentication
-builder.Services.AddAuthentication().AddCookie(configuration =>
+builder.Services.AddAuthentication("CookieAuth").AddCookie("CookieAuth",configuration =>
 {
     configuration.AccessDeniedPath = "/Account/Login";
     configuration.LoginPath = "/Account/Login";
     configuration.ExpireTimeSpan = TimeSpan.FromHours(1);
+    configuration.Cookie.Name="UserLoginCookie";
 });
 #endregion
 

@@ -117,7 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome To Flight Reservation Application!</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Change Language</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="GotoLoginPage" xml:space="preserve">
+    <value>Already have an account?</value>
+  </data>
+  <data name="GotoRegisterPage" xml:space="preserve">
+    <value>Free Register</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LoginForm" xml:space="preserve">
+    <value>Login Form</value>
+  </data>
+  <data name="LoginFormDescription" xml:space="preserve">
+    <value>Please fill your information to login</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="RegisterForm" xml:space="preserve">
+    <value>Register Form</value>
+  </data>
+  <data name="RegisterFormDescription" xml:space="preserve">
+    <value>Please fill your information to register!</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>SignUp</value>
+  </data>
+  <data name="Turkish" xml:space="preserve">
+    <value>Turkish</value>
   </data>
 </root>

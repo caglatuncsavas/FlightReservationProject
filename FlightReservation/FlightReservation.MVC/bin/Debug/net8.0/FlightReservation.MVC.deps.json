@@ -15,11 +15,11 @@
           "FlightReservation.MVC.dll": {}
         },
         "resources": {
-          "tr-TR/FlightReservation.MVC.resources.dll": {
-            "locale": "tr-TR"
-          },
           "en-US/FlightReservation.MVC.resources.dll": {
             "locale": "en-US"
+          },
+          "tr-TR/FlightReservation.MVC.resources.dll": {
+            "locale": "tr-TR"
           }
         }
       },

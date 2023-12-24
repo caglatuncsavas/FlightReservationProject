@@ -117,7 +117,52 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Welcome" xml:space="preserve">
-    <value>Uçak Rezervasyonu Uygulamasına Hoşgeldiniz!</value>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Dili Değiştir</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>İngilizce</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="GotoLoginPage" xml:space="preserve">
+    <value>Zaten hesabınız var mı?</value>
+  </data>
+  <data name="GotoRegisterPage" xml:space="preserve">
+    <value>Ücresiz kayıt ol</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Soyad</value>
+  </data>
+  <data name="LoginForm" xml:space="preserve">
+    <value>Giriş Formu</value>
+  </data>
+  <data name="LoginFormDescription" xml:space="preserve">
+    <value>Giriş yapmak için bilgilerinizi doldurun.</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Çıkış Yap</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Şifre</value>
+  </data>
+  <data name="RegisterForm" xml:space="preserve">
+    <value>Kayıt Formu</value>
+  </data>
+  <data name="RegisterFormDescription" xml:space="preserve">
+    <value>Lütfen kayıt olmak için bilgilerinizi giriniz!</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
+  <data name="Turkish" xml:space="preserve">
+    <value>Türkçe</value>
   </data>
 </root>

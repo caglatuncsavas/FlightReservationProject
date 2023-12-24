@@ -22,4 +22,18 @@ public class LanguageService
     {
         return _localizer[key];
     }
+
+    public string GetCurrentlanguage(HttpRequest request)
+    {
+        var languageCookie = request.Cookies[".AspNetCore.Culture"];
+        if(languageCookie is not null)
+        {
+            string[] result= languageCookie.Split("=");
+           return result[2];
+        }
+        else
+        {
+            return "en-US";
+        }
+    }
 }
