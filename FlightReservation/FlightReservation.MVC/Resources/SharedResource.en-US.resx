@@ -129,11 +129,17 @@
   <data name="FirstName" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="FlightReservation" xml:space="preserve">
+    <value>Flight Reservation</value>
+  </data>
   <data name="GotoLoginPage" xml:space="preserve">
     <value>Already have an account?</value>
   </data>
   <data name="GotoRegisterPage" xml:space="preserve">
     <value>Free Register</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Last Name</value>

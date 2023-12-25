@@ -1,6 +1,7 @@
 ﻿using FlightReservation.MVC.Context;
 using FlightReservation.MVC.DTOs;
 using FlightReservation.MVC.Models;
+using FlightReservation.MVC.Repositories;
 using FlightReservation.MVC.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Localization;
@@ -12,11 +13,12 @@ public class AccountController : Controller
 {
     private LanguageService _localization;
     private readonly AppDbContext _context;
-
-    public AccountController(LanguageService localization, AppDbContext context)
+   private readonly UserRepository _userRepository;
+    public AccountController(LanguageService localization, AppDbContext context, UserRepository userRepository)
     {
         _localization = localization;
         _context = context;
+        _userRepository = userRepository;
     }
 
     public IActionResult Login()
@@ -29,11 +31,14 @@ public class AccountController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(LoginDto request)
     {
-        User? user = _context.Set<User>().Where(p => p.Email == request.Email && p.Password == request.Password).FirstOrDefault();
+        User? user = _userRepository.GetUserByEmailAndPassword(request.Email, request.Password);
 
         if (user is null)
         {
-            //to do: Burada hata döndereceğiz.
+            ViewBag.Error = "Kullanıcı adı veya şifre hatalı!";
+            ViewBag.Email = request.Email;
+            ViewBag.Password = request.Password;
+            return View();
         }
 
         var claims = new List<Claim>()
@@ -45,7 +50,16 @@ public class AccountController : Controller
         var claimsIdentity = new ClaimsIdentity(claims, "CookieAuth");
         var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
+        List<string> roles = _userRepository.GetUserRoleByUserId(user.Id);
+
         await HttpContext.SignInAsync("CookieAuth", claimsPrincipal);
+
+        //TempData["Name"]= user.FirstName + " " + user.LastName;
+
+        if (roles.Contains("Admin"))
+        {
+            return RedirectToAction("Index", "Admin");
+        }   
         return RedirectToAction("Index", "Home");
     }
 
@@ -58,7 +72,8 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Register(RegisterDto request)
     {
-        User? user = _context.Set<User>().Where(p => p.Email == request.Email).FirstOrDefault();
+     
+        User? user =_userRepository.GetUserByEmail(request.Email);
         if (user is not null)
         {
             //to do: Burada hata döndereceğiz.
@@ -72,8 +87,7 @@ public class AccountController : Controller
             Password = request.Password
         };
 
-        _context.Add(user);
-        _context.SaveChanges();
+        _userRepository.Add(user);
 
         return RedirectToAction("Login");
     }

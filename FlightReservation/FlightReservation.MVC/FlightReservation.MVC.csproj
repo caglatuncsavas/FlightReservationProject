@@ -15,5 +15,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\dist\css\alt\" />
+    <Folder Include="wwwroot\dist\img\credit\" />
+    <Folder Include="wwwroot\dist\js\pages\" />
+  </ItemGroup>
+
 </Project>
 

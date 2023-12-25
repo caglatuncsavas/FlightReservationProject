@@ -129,11 +129,17 @@
   <data name="FirstName" xml:space="preserve">
     <value>Ad</value>
   </data>
+  <data name="FlightReservation" xml:space="preserve">
+    <value>Uçuş Rezervasyonu</value>
+  </data>
   <data name="GotoLoginPage" xml:space="preserve">
     <value>Zaten hesabınız var mı?</value>
   </data>
   <data name="GotoRegisterPage" xml:space="preserve">
     <value>Ücresiz kayıt ol</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Ana Sayfa</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Soyad</value>
