@@ -14,6 +14,8 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<PlaneRepository>();
+builder.Services.AddScoped<RouteRepository>();
 
 #region Localization
 builder.Services.AddSingleton<LanguageService>();

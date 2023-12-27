@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlightReservation.MVC.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231222141916_DatabaseOlusturma")]
+    [Migration("20231226223438_Database-Olusturma")]
     partial class DatabaseOlusturma
     {
         /// <inheritdoc />
@@ -82,6 +82,9 @@ namespace FlightReservation.MVC.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
+                    b.Property<DateTime>("ArrivalTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Departure")
                         .IsRequired()
                         .HasColumnType("varchar(50)");
@@ -139,6 +142,8 @@ namespace FlightReservation.MVC.Migrations
 
                     b.HasKey("UserId", "RoleId");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("UserRoles", (string)null);
                 });
 
@@ -151,6 +156,17 @@ namespace FlightReservation.MVC.Migrations
                         .IsRequired();
 
                     b.Navigation("Plane");
+                });
+
+            modelBuilder.Entity("FlightReservation.MVC.Models.UserRole", b =>
+                {
+                    b.HasOne("FlightReservation.MVC.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }

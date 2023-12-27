@@ -39,18 +39,6 @@ namespace FlightReservation.MVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserRoles",
-                columns: table => new
-                {
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserRoles", x => new { x.UserId, x.RoleId });
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -73,7 +61,8 @@ namespace FlightReservation.MVC.Migrations
                     PlaneId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Departure = table.Column<string>(type: "varchar(50)", nullable: false),
                     Arrival = table.Column<string>(type: "varchar(50)", nullable: false),
-                    DepartureTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    DepartureTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ArrivalTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,6 +72,24 @@ namespace FlightReservation.MVC.Migrations
                         column: x => x.PlaneId,
                         principalTable: "Planes",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserRoles",
+                columns: table => new
+                {
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_UserRoles_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -103,6 +110,11 @@ namespace FlightReservation.MVC.Migrations
                 column: "PlaneId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserRoles_RoleId",
+                table: "UserRoles",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
                 table: "Users",
                 column: "Email",
@@ -112,9 +124,6 @@ namespace FlightReservation.MVC.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Roles");
-
             migrationBuilder.DropTable(
                 name: "Routes");
 
@@ -126,6 +135,9 @@ namespace FlightReservation.MVC.Migrations
 
             migrationBuilder.DropTable(
                 name: "Planes");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
         }
     }
 }
