@@ -99,6 +99,30 @@ namespace FlightReservation.MVC.Migrations
                     b.ToTable("Routes", (string)null);
                 });
 
+            modelBuilder.Entity("FlightReservation.MVC.Models.Ticket", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RouteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("SeatNumber")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RouteId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tickets", (string)null);
+                });
+
             modelBuilder.Entity("FlightReservation.MVC.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -153,6 +177,25 @@ namespace FlightReservation.MVC.Migrations
                         .IsRequired();
 
                     b.Navigation("Plane");
+                });
+
+            modelBuilder.Entity("FlightReservation.MVC.Models.Ticket", b =>
+                {
+                    b.HasOne("FlightReservation.MVC.Models.Route", "Route")
+                        .WithMany()
+                        .HasForeignKey("RouteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FlightReservation.MVC.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Route");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FlightReservation.MVC.Models.UserRole", b =>

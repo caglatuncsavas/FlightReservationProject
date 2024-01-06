@@ -1,16 +1,19 @@
-﻿@model IEnumerable<Route>
+﻿qusing FlightReservation.MVC.DTOs;
+@model RouteDto
 @{
     ViewData["Title"] = "Home Page";
     int index = 0;
+
+   var date = (DateTime)ViewBag.Date;
 }
 
 <h1>@localization.Getkey("Hello").Value</h1>
-
+<form asp-controller="Home" asp-action="Index" method="post" autocomplete="off">
 <div class="d-flex" style="gap:10px">
-    <form asp-controller="Home" asp-action="Index" method="post" autocomplete="off">
+   
         <div class="form-group w-100">
             <label>@localization.Getkey("Departure").Value</label>
-            <select class="form-control" name="departure">
+            <select class="form-control" name="departure" value="@ViewBag.Departure">
                 <option>İstanbul</option>
                 <option>Ankara</option>
                 <option>Kayseri</option>
@@ -20,7 +23,7 @@
 
         <div class="form-group w-100">
             <label>@localization.Getkey("Arrival").Value</label>
-            <select class="form-control" name="arrival">
+            <select class="form-control" name="arrival" value="@ViewBag.Arrival">
                 <option>İstanbul</option>
                 <option>Ankara</option>
                 <option>Kayseri</option>
@@ -30,7 +33,7 @@
 
         <div class="form-group w-100">
             <label>@localization.Getkey("Date").Value</label>
-            <input class="form-control" type="date" name="date" />
+            <input class="form-control" type="date" name="date" value="@date.ToString("yyyy-MM-dd")" />
         </div>
 
         <div class="form-group w-100">
@@ -39,8 +42,8 @@
                     @localization.Getkey("Search").Value
             </button>
         </div>
-    </form>
  </div>
+</form>
  <hr />
  <table class="table table-bordered table-hover">
     <thead>
@@ -56,12 +59,21 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model)
+        @foreach(var item in Model.Routes)
         {
             index++;
         <td>@index</td>
         <td>@item.Departure</td>
-        <td>@item.</td>
+        <td>@item.Arrival</td>
+        <td>@item.DepartureTime</td>
+        <td>@item.ArrivalTime</td>
+        <td>@item.Plane!.Name</td>
+        <td>@item.Plane.TailNumber</td>
+        <td>
+            <button class="btn btn-dark">@localization.Getkey("Select").Value</button>
+        </td>
+
         }
     </tbody>
  </table>
+>

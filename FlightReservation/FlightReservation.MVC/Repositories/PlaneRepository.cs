@@ -19,7 +19,7 @@ public sealed class PlaneRepository(AppDbContext context)
 
     public bool CheckTailNumberExist(string tailNumber)
     {
-        return context.Set<Plane>().Any(p => p.TailNumber == tailNumber);
+        return context.Set<Plane>().Any(p => p.TailNumber == tailNumber);//Belirtilen kuyruk numarasına sahip bir Plane nesnesinin veritabanında olup olmadığını kontrol eder.
     }
 
     public void RemoveById(Guid id)
