@@ -1,5 +1,6 @@
 using Azure.Core;
 using FlightReservation.MVC.DTOs;
+using FlightReservation.MVC.Models;
 using FlightReservation.MVC.Repositories;
 using System.Security.Claims;
 
@@ -20,39 +21,36 @@ public class HomeController(
         }
         ViewBag.Date = DateTime.Now;
 
-        var response = ticketRepository.GetAll(Guid.Parse(userId ?? ""));
-
-        RouteDto routeDto = new()
-        {
-            Tickets = response,
-         
-        };
-
-        return Ok(response);
-
-        return View(new List<Route>());
+       return View(new List<Route>());
     }
-
     [HttpPost]
     public IActionResult Index(GetRoutesDto request)
     {
-        string userId = User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.NameIdentifier)!.Value;
-
         ViewBag.Departure = request.Departure;
         ViewBag.Arrival = request.Arrival;
         ViewBag.Date = request.Date;
         IEnumerable<Route> routes = routeRepository.GetRoutesByParameter(request);
 
-        var response = ticketRepository.GetAll(Guid.Parse(userId ?? ""));
-
-        RouteDto routeDto = new()
-        {
-            Routes = routes,
-            Tickets = response
-
-        };
-
         return View(routes);
+    }
+
+    [HttpPost]
+    public IActionResult AddTicket(AddTicketDto request)
+    {
+
+        string? userId = User.Claims.Where(p => p.Type == ClaimTypes.NameIdentifier).Select(s => s.Value).FirstOrDefault();
+        if (userId is not null)
+        {
+            Ticket ticket = new()
+            {
+                RouteId = request.RouteId,
+                SeatNumber = request.SeatNumber,
+                UserId = Guid.Parse(userId)
+            };
+            ticketRepository.Add(ticket);
+        }
+
+        return RedirectToAction("Index", "Tickets");
     }
 
 }

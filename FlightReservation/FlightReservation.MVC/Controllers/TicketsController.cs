@@ -1,45 +1,17 @@
-﻿using FlightReservation.MVC.DTOs;
-using FlightReservation.MVC.Models;
-using FlightReservation.MVC.Repositories;
-using Microsoft.AspNetCore.Http;
+﻿using FlightReservation.MVC.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration.UserSecrets;
 using System.Security.Claims;
 
 namespace FlightReservation.MVC.Controllers;
-[Route("api/[controller]/[Action]")]
-[ApiController]
 [Authorize]
-public sealed class TicketsController(TicketRepository ticketRepository) : ControllerBase
+public class TicketsController(
+    TicketRepository ticketRepository
+    ) : Controller
 {
-    //Kullanıcının aldığı biletleri göstermek istiyoruz.Önce user bilgilerini alıyoruz.
-    [HttpGet]
-    public IActionResult GetAll()
+    public IActionResult Index()
     {
-        string? userId=User.Claims.Where(p=>p.Type == ClaimTypes.NameIdentifier).Select(s=>s.Value).FirstOrDefault();
-        
+        string userId = User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.NameIdentifier)!.Value;
         var response = ticketRepository.GetAll(Guid.Parse(userId ?? ""));
-        
-        return Ok(response);
+        return View(response);
     }
-
-    [HttpPost]
-    public IActionResult Add(AddTicketDto request)
-    {
-
-        string? userId= User.Claims.Where(p=> p.Type == ClaimTypes.NameIdentifier).Select(s=> s.Value).FirstOrDefault();
-        if(userId is not null)
-        {
-            Ticket ticket = new()
-            {
-                RouteId = request.RouteId,
-                SeatNumber = request.SeatNumber,
-                UserId = Guid.Parse(userId)
-            };
-            ticketRepository.Add(ticket);
-        }
-
-     return RedirectToAction("Index", "Home");
-    }
-
 }
