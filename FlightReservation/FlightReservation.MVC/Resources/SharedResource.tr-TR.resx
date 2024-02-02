@@ -162,6 +162,9 @@
   <data name="GotoRegisterPage" xml:space="preserve">
     <value>Ücresiz kayıt ol</value>
   </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hoşgeldiniz</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Ana Sayfa</value>
   </data>
@@ -225,10 +228,16 @@
   <data name="TailNumber" xml:space="preserve">
     <value>Kuyruk Numarası</value>
   </data>
+  <data name="TicketPage" xml:space="preserve">
+    <value>Bilet Sayfası</value>
+  </data>
   <data name="TotalSeats" xml:space="preserve">
     <value>Toplam Koltuk Sayısı</value>
   </data>
   <data name="Turkish" xml:space="preserve">
     <value>Türkçe</value>
+  </data>
+  <data name="YourTickets" xml:space="preserve">
+    <value>Biletleriniz</value>
   </data>
 </root>

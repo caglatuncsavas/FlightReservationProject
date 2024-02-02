@@ -1,38 +1,41 @@
 ﻿@using FlightReservation.MVC.Models;
 @model IEnumerable<Ticket>
 @{
+    
 }
 <h1>@localization.Getkey("TicketPage").Value</h1>
 <link rel="stylesheet" href="/css/ticket.css" />
 
 <section class="container">
-    <h1>Events</h1>
+    <h1>@localization.Getkey("YourTickets").Value</h1>
     <div class="row">
         @foreach (var ticket in Model)
         {
             <article class="card fl-left">
                 <section class="date">
-                    <time datetime="23th feb">
-                        <span>23</span><span>feb</span>
+                    <time datetime="@ticket.Route?.DepartureTime.ToString("yyyy MM dd")">
+                        <span>@ticket.Route?.DepartureTime.ToString("dd")</span>
+                        <span>@ticket.Route?.DepartureTime.ToString("MMM")</span>
+                        <span>@ticket.Route?.DepartureTime.ToString("yyyy")</span>
                     </time>
                 </section>
                 <section class="card-cont">
-                    <small>dj khaled</small>
-                    <h3>live in sydney</h3>
+                    <small>@ticket.Route?.Plane?.Name</small>
+                    <h3>@localization.Getkey("Flight To").Value @ticket.Route?.Arrival</h3>
                     <div class="even-date">
                         <i class="fa fa-calendar"></i>
-                        <time>
-                            <span>wednesday 28 december 2014</span>
-                            <span>08:55pm to 12:00 am</span>
+                        <time style="padding: 10px; white-space: nowrap;">
+                            <span>@ticket.Route?.DepartureTime.ToString("dd MM yyyy")</span>
+                            <span>@ticket.Route?.DepartureTime.ToString("HH:mm") to @ticket.Route?.ArrivalTime.ToString("HH:mm")</span>
                         </time>
                     </div>
                     <div class="even-info">
                         <i class="fa fa-map-marker"></i>
                         <p>
-                            nexen square for people australia, sydney
+                            @ticket.Route?.Departure - @ticket.Route?.Arrival
                         </p>
                     </div>
-                    <a href="#">tickets</a>
+                    <a href="#">@localization.Getkey("ViewTicket").Value</a>
                 </section>
             </article>
         }

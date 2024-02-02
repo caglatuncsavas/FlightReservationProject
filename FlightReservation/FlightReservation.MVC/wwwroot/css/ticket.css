@@ -80,7 +80,8 @@ h1 {
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%)
+        transform: translate(-50%, -50%);
+        
     }
 
         .date time span {
@@ -108,7 +109,8 @@ h1 {
 
     .card-cont h3 {
         color: #3C3C3C;
-        font-size: 130%
+        font-size: 130%;
+        text-decoration: none !important;
     }
 
 .row:last-child .card:last-of-type .card-cont h3 {
@@ -142,7 +144,7 @@ h1 {
 .card-cont a {
     display: block;
     text-decoration: none;
-    width: 80px;
+    width: 100px;
     height: 30px;
     background-color: #D8DDE0;
     color: #fff;

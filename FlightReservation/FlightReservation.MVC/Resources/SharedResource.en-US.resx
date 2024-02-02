@@ -162,6 +162,9 @@
   <data name="GotoRegisterPage" xml:space="preserve">
     <value>Free Register</value>
   </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello</value>
+  </data>
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
@@ -225,10 +228,16 @@
   <data name="TailNumber" xml:space="preserve">
     <value>Tail Number</value>
   </data>
+  <data name="TicketPage" xml:space="preserve">
+    <value>Ticket Page</value>
+  </data>
   <data name="TotalSeats" xml:space="preserve">
     <value>Total Seats</value>
   </data>
   <data name="Turkish" xml:space="preserve">
     <value>Turkish</value>
+  </data>
+  <data name="YourTickets" xml:space="preserve">
+    <value>Your Tickets</value>
   </data>
 </root>
